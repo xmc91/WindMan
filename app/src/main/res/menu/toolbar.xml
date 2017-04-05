@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/backup"
+        android:title="Backup"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/delete"
+        android:title="Delete"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/setting"
+        android:title="Setting"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/xixi"
+        android:title="XiXi"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/haha"
+        android:title="Haha"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/heihei"
+        android:title="HeiHei"
+        app:showAsAction="never" />
+</menu>

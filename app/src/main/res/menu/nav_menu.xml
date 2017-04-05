@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_call"
+            android:title="音乐" />
+        <item
+            android:id="@+id/nav_map"
+            android:title="地图" />
+        <item
+            android:id="@+id/nav_location"
+            android:title="浏览器" />
+        <item
+            android:id="@+id/nav_mail"
+            android:title="翻译" />
+        <item
+            android:id="@+id/nav_task"
+            android:title="查询" />
+    </group>
+</menu>

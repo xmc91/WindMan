@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.windman">
+    package="com.play.windman">
 
     <!-- 允许程序打开网络套接字 -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -22,7 +22,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UI.Activitys.MainActivity">
+        <activity android:name="com.play.windman.UI.Activitys.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,15 +30,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UI.Activitys.PictureActivity"
+            android:name="com.play.windman.UI.Activitys.PictureActivity"
             android:theme="@style/AppTheme" />
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="058d436b4c32c2065eef5acccc3401a3" />
 
-        <activity android:name=".UI.Activitys.GaoDeMapActivity" />
-        <activity android:name=".UI.Activitys.WeatherActivity"></activity>
+        <activity android:name="com.play.windman.UI.Activitys.GaoDeMapActivity" />
+        <activity android:name="com.play.windman.UI.Activitys.WeatherActivity"></activity>
     </application>
 
 </manifest>

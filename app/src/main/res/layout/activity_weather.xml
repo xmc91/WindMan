@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.windman.UI.Activitys.WeatherActivity">
+    tools:context="com.play.windman.play.windman.UI.Activitys.WeatherActivity">
 
 </android.support.constraint.ConstraintLayout>

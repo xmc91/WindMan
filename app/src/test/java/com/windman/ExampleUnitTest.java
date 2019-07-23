@@ -1,4 +1,4 @@
-package com.windman;
+package com.play.windman;
 
 import org.junit.Test;
 

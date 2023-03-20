@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/WindMan.iml" filepath="$PROJECT_DIR$/WindMan.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/WindMan.iml" filepath="$PROJECT_DIR$/.idea/modules/WindMan.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/WindMan.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/WindMan.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/WindMan.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/WindMan.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/WindMan.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/WindMan.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/WindMan.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/WindMan.app.unitTest.iml" />
     </modules>
   </component>
 </project>

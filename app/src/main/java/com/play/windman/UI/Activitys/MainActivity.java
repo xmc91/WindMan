@@ -1,7 +1,11 @@
 package com.play.windman.UI.Activitys;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -14,9 +18,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.play.windman.Beans.Picture;
@@ -29,9 +35,10 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
-
+    private static final String TAG = "MainActivity";
     private Toolbar toolbar;
 
     private DrawerLayout mDrawerLayout;
@@ -44,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
 
     private SwipeRefreshLayout swipeRefresh;
 
+    private CircleImageView headImg;
+    private ViewGroup headLayout;
 
     private Picture[] pictures = {new Picture("水漫金山", R.mipmap.aa),
             new Picture("湖光山色", R.mipmap.aa),
@@ -67,11 +76,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
-
-
+        headLayout = (ViewGroup) mNavigationView.getHeaderView(0);
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Log.e(TAG, "onNavigationItemSelected: " + item.getItemId());
                 switch (item.getItemId()) {
                     case R.id.nav_map:
                         GaoDeMapActivity.actionStart(MainActivity.this, "");
@@ -119,7 +128,16 @@ public class MainActivity extends AppCompatActivity {
                 refreshDatas();
             }
         });
-
+        headImg = headLayout.findViewById(R.id.icon_image);
+        headImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                startActivityForResult(new Intent(MediaStore.ACTION_IMAGE_CAPTURE), 100);
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent, 101);
+            }
+        });
     }
 
     private void refreshDatas() {
@@ -170,5 +188,38 @@ public class MainActivity extends AppCompatActivity {
             default:
         }
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100) {
+            final Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+            Log.e(TAG, "onActivityResult: " + bitmap);
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    headImg.setImageBitmap(bitmap);
+                }
+            });
+        } else if (requestCode == 101) {
+            Uri uri = data.getData();
+            Log.e(TAG, "onActivityResult: " + uri.toString());
+            Intent crop = crop(uri);
+            startActivityForResult(crop, 100);
+        }
+    }
+
+    public Intent crop(Uri uri){
+        Intent intent=new Intent("com.android.camera.action.CROP");
+        intent.setDataAndType(uri,"image/*");
+        intent.putExtra("crop", true);
+        intent.putExtra("aspectX", 1);
+        intent.putExtra("aspectY", 1);
+        intent.putExtra("outputX", 250);
+        intent.putExtra("outputY", 250);
+        intent.putExtra("outputFromet", "JPEG");
+        intent.putExtra("return-data", true);
+        return intent;
     }
 }

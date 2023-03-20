@@ -22,14 +22,16 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".ble.BleActivity">
+
+        </activity>
+        <activity
+            android:name=".UI.Activitys.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".UI.Activitys.MainActivity">
-
         </activity>
         <activity
             android:name=".UI.Activitys.PictureActivity"
@@ -42,6 +44,7 @@
 
         <service
             android:name=".NotificationMonitor"
+            android:exported="true"
             android:label="testNotification"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
             <intent-filter>
